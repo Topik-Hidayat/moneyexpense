@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipeTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTipeTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipe', function (Blueprint $table) {
-            $table->id();
-            $table->enum('tipe', ['Pemasukan', 'Pengeluaran']);
-            $table->string('nama', 255); 
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateTipeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipe');
+        Schema::dropIfExists('password_resets');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Tipe;
 use Illuminate\Database\Seeder;
 
 class TipeSeed extends Seeder
@@ -11,6 +12,20 @@ class TipeSeed extends Seeder
      */
     public function run()
     {
-        //
+        $data = [
+            // Pemasukan
+            ['nama' => 'Gaji', 'tipe' => 'Pemasukan'],
+            ['nama' => 'Lain Lain','tipe' => 'Pemasukan'],
+            // Pengeluaran
+            ['nama' => 'Orang Tua', 'tipe' => 'Pengeluaran'],
+            ['nama' => 'Roko & Kopi', 'tipe' => 'Pengeluaran'],
+            ['nama' => 'Topup E-money', 'tipe' => 'Pengeluaran'],
+            ['nama' => 'Lain Lain', 'tipe' => 'Pengeluaran']
+        ];
+
+
+        foreach($data as $item) {
+            Tipe::create($item);
+        }
     }
 }
